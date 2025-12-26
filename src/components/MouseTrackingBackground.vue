@@ -12,7 +12,7 @@
     
     <!-- Floating Particles -->
     <div class="particle-container">
-      <div v-for="i in 15" :key="i" class="particle" :style="getParticleStyle(i)"></div>
+      <div v-for="i in 15" :key="i" class="particle" :style="getParticleStyle()"></div>
     </div>
     
     <!-- Cursor-Following Galaxy Orbs -->
@@ -62,7 +62,7 @@ const blob3Y = ref(0)
 const isMobile = ref(false)
 
 // Helper function to generate particle styles
-const getParticleStyle = (index: number) => {
+const getParticleStyle = () => {
   const randomX = Math.random() * 100
   const randomY = Math.random() * 100
   const size = Math.random() * 3 + 1
