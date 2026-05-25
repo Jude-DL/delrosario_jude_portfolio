@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>POLICE-NOW — Project Landing</title>
+    <style>
+      :root{--bg:#071028;--muted:#9fb3c8;--accent:#00ff88}
+      *{box-sizing:border-box}
+      body{font-family:system-ui,-apple-system,Roboto,'Segoe UI',sans-serif;background:var(--bg);color:#e6eef8;margin:0;padding:32px}
+      .container{max-width:1100px;margin:0 auto}
+      .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;padding:28px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);box-shadow:0 8px 30px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.04)}
+      h1{font-size:28px;margin:0 0 8px}
+      p.lead{color:var(--muted);margin:0 0 16px}
+      .features{display:flex;gap:12px;flex-wrap:wrap}
+      .feature{background:rgba(255,255,255,0.02);padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);min-width:180px}
+      .screenshot{width:100%;height:220px;border-radius:10px;background:linear-gradient(135deg,#0f1724,#0b1a3a);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+      .controls{display:flex;gap:10px;margin-top:18px}
+      .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#e6eef8;padding:10px 14px;border-radius:10px;cursor:pointer}
+      .btn.primary{background:var(--accent);color:#022;box-shadow:0 8px 24px rgba(0,255,136,0.08);border:none}
+      .tabs{display:flex;gap:8px;margin-top:20px}
+      .tab{padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.01);cursor:pointer;border:1px solid transparent}
+      .tab.active{background:rgba(0,255,136,0.06);border-color:rgba(0,255,136,0.12)}
+      .detail{margin-top:20px;padding:16px;border-radius:10px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.02)}
+      .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);opacity:0;pointer-events:none;transition:opacity .18s}
+      .modal.open{opacity:1;pointer-events:auto}
+      .modal-card{width:880px;max-width:95%;background:#071028;padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+      .close{float:right;border:none;background:transparent;color:var(--muted);cursor:pointer}
+      footer{margin-top:28px;color:var(--muted)}
+      a.back{color:var(--accent);text-decoration:none}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <div>
+          <h1>POLICE-NOW</h1>
+          <p class="lead">A mobile-first emergency response platform with real-time incident reporting, responder routing, and prioritized dispatching.</p>
+
+          <div class="features" aria-hidden="true">
+            <div class="feature">
+              <strong>Realtime Alerts</strong>
+              <div style="color:var(--muted);font-size:13px">Incident push notifications and location sharing</div>
+            </div>
+            <div class="feature">
+              <strong>Responder Routing</strong>
+              <div style="color:var(--muted);font-size:13px">Optimized routing and on-duty management</div>
+            </div>
+            <div class="feature">
+              <strong>Secure Profiles</strong>
+              <div style="color:var(--muted);font-size:13px">Role-based access and audited logs</div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button class="btn primary" id="viewDemo">Open Live Preview</button>
+            <button class="btn" id="openDetails">Read Details</button>
+            <a class="btn" href="/">Back to Portfolio</a>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Project sections">
+            <div class="tab active" data-tab="overview">Overview</div>
+            <div class="tab" data-tab="tech">Tech</div>
+            <div class="tab" data-tab="security">Security</div>
+          </div>
+
+          <div class="detail" id="detailContent">
+            <h3>Overview</h3>
+            <p style="color:var(--muted)">POLICE-NOW helps citizens report incidents quickly and routes nearby responders with location-aware dispatching and real-time status updates.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="screenshot" id="screenshot">App Preview</div>
+          <p style="color:var(--muted);font-size:13px;margin-top:8px">Tap "Open Live Preview" to simulate the mobile flow.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;color:var(--muted);font-size:13px">Tip: Use the tabs to explore technical details, then open the preview modal for a quick walkthrough.</div>
+
+      <div class="modal" id="modal">
+        <div class="modal-card">
+          <button class="close" id="closeModal">✕</button>
+          <h2>Live Preview — POLICE-NOW</h2>
+          <p style="color:var(--muted)">This simulated preview demonstrates reporting flow and responder notifications.</p>
+          <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+            <div style="flex:1;min-width:260px;padding:12px;border-radius:8px;background:#08142a;border:1px solid rgba(255,255,255,0.02)">
+              <strong>Report Incident</strong>
+              <p style="color:var(--muted);font-size:13px">Select type, add location, and send — responders receive it instantly.</p>
+            </div>
+            <div style="flex:1;min-width:260px;padding:12px;border-radius:8px;background:#08142a;border:1px solid rgba(255,255,255,0.02)">
+              <strong>Responder View</strong>
+              <p style="color:var(--muted);font-size:13px">Nearby responders see the call with ETA and route suggestions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>Built as part of a student portfolio — <a class="back" href="/">Return</a></p>
+      </footer>
+    </div>
+
+    <script>
+      const tabs = document.querySelectorAll('.tab')
+      const detail = document.getElementById('detailContent')
+      tabs.forEach(t => t.addEventListener('click', () => {
+        tabs.forEach(x => x.classList.remove('active'))
+        t.classList.add('active')
+        const key = t.dataset.tab
+        if (key === 'overview') {
+          detail.innerHTML = '<h3>Overview</h3><p style="color:var(--muted)">POLICE-NOW helps citizens report incidents quickly and routes nearby responders with location-aware dispatching and real-time status updates.</p>'
+        } else if (key === 'tech') {
+          detail.innerHTML = '<h3>Tech Stack</h3><p style="color:var(--muted)">Flutter mobile client, Node.js real-time API, WebSocket-based notifications, PostgreSQL for persistence.</p>'
+        } else if (key === 'security') {
+          detail.innerHTML = '<h3>Security</h3><p style="color:var(--muted)">Role-based access, encrypted transport (TLS), and audit logging for incident lifecycle.</p>'
+        }
+      }))
+
+      const modal = document.getElementById('modal')
+      document.getElementById('viewDemo').addEventListener('click', () => modal.classList.add('open'))
+      document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'))
+      document.getElementById('openDetails').addEventListener('click', () => {
+        const el = document.querySelector('.detail')
+        el.scrollIntoView({behavior:'smooth'})
+        el.style.transform = 'translateY(-6px)'
+        setTimeout(()=>el.style.transform='none',300)
+      })
+    </script>
+  </body>
+</html>

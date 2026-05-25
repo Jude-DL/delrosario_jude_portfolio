@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CCS Intensive Profiling System — Project Landing</title>
+    <style>
+      :root{--bg:#071028;--muted:#9fb3c8;--accent:#00ff88}
+      body{margin:0;padding:32px;background:var(--bg);color:#e6eef8;font-family:system-ui,-apple-system,Roboto,'Segoe UI',sans-serif}
+      .container{max-width:1100px;margin:0 auto}
+      .hero{padding:28px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.04);display:flex;gap:20px}
+      .left{flex:1}
+      .right{width:360px}
+      .card{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+      .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(0,255,136,0.06);color:var(--accent);font-weight:600}
+      .feature-list{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+      .feature-item{background:rgba(0,0,0,0.35);padding:10px;border-radius:8px}
+      .cta{display:flex;gap:10px;margin-top:18px}
+      .btn{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6eef8;cursor:pointer}
+      .btn.primary{background:var(--accent);color:#022;border:none}
+      .accordion{margin-top:18px}
+      .acc-item{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.02);margin-bottom:8px}
+      .acc-head{padding:10px;background:rgba(255,255,255,0.01);cursor:pointer}
+      .acc-body{padding:12px;background:rgba(0,0,0,0.35);display:none}
+      footer{margin-top:20px;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <div class="left">
+          <h1>CCS Intensive Profiling System</h1>
+          <p style="color:var(--muted);margin-top:6px">A multi-role profiling and onboarding platform for students, faculty, and administrators, built with Vue.js and Laravel.</p>
+
+          <div class="card" style="margin-top:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div class="pill">Role-based</div>
+                <div style="color:var(--muted);margin-top:6px">Custom dashboards, QR event ticketing, and secure data reporting.</div>
+              </div>
+              <div style="text-align:right;color:var(--muted)">2025 • University Project</div>
+            </div>
+
+            <div class="feature-list">
+              <div class="feature-item">Onboarding Surveys</div>
+              <div class="feature-item">QR Ticketing</div>
+              <div class="feature-item">Reports & Exports</div>
+              <div class="feature-item">Role Dashboards</div>
+            </div>
+
+            <div class="cta">
+              <button class="btn primary" id="openCase">Open Case Study</button>
+              <a class="btn" href="/">Back to Portfolio</a>
+            </div>
+          </div>
+
+          <div class="accordion" id="accordion">
+            <div class="acc-item">
+              <div class="acc-head">Architecture</div>
+              <div class="acc-body">Laravel backend, MySQL/Postgres, REST APIs and Vue.js admin SPA.</div>
+            </div>
+            <div class="acc-item">
+              <div class="acc-head">Security & Privacy</div>
+              <div class="acc-body">Role-based auth, encrypted transports, and data retention policies.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="card">
+            <h3 style="margin:0 0 8px">Preview</h3>
+            <div style="height:200px;border-radius:10px;background:linear-gradient(135deg,#071428,#0b2546);display:flex;align-items:center;justify-content:center;color:var(--muted)">Dashboard Snapshot</div>
+            <p style="color:var(--muted);font-size:13px;margin-top:10px">Click "Open Case Study" for an interactive summary.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="caseModal" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);align-items:center;justify-content:center">
+        <div style="max-width:900px;margin:60px auto;background:#071028;padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
+          <button id="closeCase" style="float:right;background:transparent;border:none;color:var(--muted);cursor:pointer">✕</button>
+          <h2>CCS Intensive Profiling — Case Study</h2>
+          <p style="color:var(--muted)">Interactive walkthrough of onboarding flows, dashboards, and reporting features.</p>
+          <ol style="color:var(--muted)">
+            <li>Survey-driven onboarding</li>
+            <li>Role-assigned dashboards</li>
+            <li>QR ticketing integrated with events</li>
+          </ol>
+        </div>
+      </div>
+
+      <footer>Built as part of a student portfolio — <a href="/">Return</a></footer>
+    </div>
+
+    <script>
+      document.querySelectorAll('.acc-head').forEach(h=>h.addEventListener('click', ()=>{
+        const body = h.nextElementSibling
+        const open = body.style.display === 'block'
+        document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none')
+        body.style.display = open ? 'none' : 'block'
+      }))
+
+      const modal = document.getElementById('caseModal')
+      document.getElementById('openCase').addEventListener('click', ()=>{ modal.style.display='flex' })
+      document.getElementById('closeCase').addEventListener('click', ()=>{ modal.style.display='none' })
+    </script>
+  </body>
+</html>
