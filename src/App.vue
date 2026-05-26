@@ -8,7 +8,9 @@
       <div class="nav-content">
         <button class="nav-toggle" @click="mobileOpen = !mobileOpen" :aria-expanded="mobileOpen" aria-label="Open navigation">☰</button>
         <div class="logo" @click="downloadCV">
-          <div class="logo-text">MY PORTFOLIO</div>
+          <span class="logo-text logo-white">Dev</span>
+          <span class="logo-text logo-highlight">Jude</span>
+          <span class="logo-text logo-white">&lt;/&gt;</span>
         </div>
         <ul class="nav-links">
           <li><a href="#home" @click="scrollToSection" class="nav-link">Home</a></li>
@@ -1040,13 +1042,17 @@ const handleClickOutside = (e: MouseEvent) => {
 .logo-text {
   font-size: 16px;
   font-weight: 800;
-  color: var(--primary-1);
-  background: linear-gradient(135deg, var(--primary-1) 0%, var(--primary-2) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
   white-space: nowrap;
   transition: all 0.3s ease;
+}
+
+.logo-highlight {
+  color: var(--primary-1);
+}
+
+.logo-white {
+  color: #ffffff;
 }
 
 .logo:hover .logo-circle {
@@ -1055,9 +1061,11 @@ const handleClickOutside = (e: MouseEvent) => {
 }
 
 .logo:hover .logo-text {
-  color: var(--primary-1);
-  background: none;
-  -webkit-text-fill-color: currentColor;
+  opacity: 0.92;
+}
+
+.logo:hover .logo-highlight {
+  color: var(--primary-2);
 }
 
 .nav-links {
@@ -2958,10 +2966,6 @@ section.animate-in {
   .logo-text {
     font-size: 13px;
     display: inline-block;
-    background: linear-gradient(135deg, var(--primary-1) 0%, var(--primary-2) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   .nav-link {
