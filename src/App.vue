@@ -1401,9 +1401,8 @@ const handleClickOutside = (e: MouseEvent) => {
               0 0 40px rgba(255,122,26,0.12),
               inset 0 0 20px rgba(255, 255, 255, 0.1);
   animation: floatImage 6s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
-  transition: transform 0.3s ease;
-  margin-left: 80px !important;
-  transform: translateX(80px) !important;
+  margin-left: 40px;
+  overflow: visible;
   transition: margin 0.25s ease, transform 0.3s ease;
 }
 
@@ -1425,8 +1424,8 @@ const handleClickOutside = (e: MouseEvent) => {
 /* Small speech bubble overlay with typing animation */
 .profile-chat {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 14px;
+  right: 14px;
   left: auto;
   z-index: 30;
   pointer-events: none;
@@ -1448,6 +1447,7 @@ const handleClickOutside = (e: MouseEvent) => {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
   transform-origin: bottom left;
   animation: bubbleIn 420ms cubic-bezier(.2,.9,.2,1) both;
 }
@@ -1480,8 +1480,8 @@ const handleClickOutside = (e: MouseEvent) => {
   transform: translateX(-6px);
 }
 
-/* typing dots that run first */
-.typing-dots { display: inline-flex; gap: 6px; align-items: center; }
+/* Keep bubble text clean and stable on load. */
+.typing-dots { display: none; }
 .typing-dots i { width: 6px; height: 6px; background: rgba(255,255,255,0.18); border-radius: 50%; display: inline-block; transform: translateY(0); }
 .typing-dots i:nth-child(1) { animation: dotBounce 1s infinite 0s; }
 .typing-dots i:nth-child(2) { animation: dotBounce 1s infinite 0.15s; }
@@ -1496,12 +1496,12 @@ const handleClickOutside = (e: MouseEvent) => {
 .typing-text {
   display: inline-block;
   white-space: nowrap;
-  overflow: hidden;
-  width: 0ch;
+  overflow: visible;
+  width: auto;
   color: var(--primary-1);
-  border-right: 0.12em solid var(--primary-1);
-  opacity: 0;
-  animation: textReveal 1.4s steps(14, end) 1s 1 forwards, textFade 0.3s ease 1s 1 forwards;
+  border-right: none;
+  opacity: 1;
+  animation: none;
 }
 
 @keyframes textReveal {
@@ -1517,8 +1517,22 @@ const handleClickOutside = (e: MouseEvent) => {
 }
 
 @media (max-width: 768px) {
-  .profile-chat { top: -6px; left: 50%; right: auto; transform: translateX(-50%); }
-  .chat-bubble { font-size: 12px; padding: 8px 10px; width: fit-content; max-width: 20ch; }
+  .profile-chat {
+    top: 8px;
+    left: 0;
+    right: 0;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .chat-bubble {
+    font-size: 12px;
+    padding: 8px 10px;
+    width: fit-content;
+    max-width: 100%;
+  }
 }
 
 @keyframes floatImage {
@@ -2650,10 +2664,10 @@ section.animate-in {
 
   .profile-image { border-radius: 12px; }
 
-  /* Put bubble compactly at top-right of image on mobile */
-  .profile-chat { top: 10px; right: 12px; left: auto; }
-  .chat-bubble { font-size: 12px; padding: 8px 10px; max-width: 20ch; }
-  .typing-text { animation: textReveal 1s steps(14, end) 0.6s 1 forwards, textFade 0.2s ease 0.6s 1 forwards; }
+  /* Keep bubble centered and unclipped on mobile. */
+  .profile-chat { top: 8px; right: 0; left: 0; }
+  .chat-bubble { font-size: 12px; padding: 8px 10px; max-width: 100%; }
+  .typing-text { animation: none; }
 
 
   .lemi-toggle:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.55); }
@@ -2765,7 +2779,7 @@ section.animate-in {
   }
 
   .chat-bubble {
-    max-width: 18ch;
+    max-width: 100%;
   }
 
   .resume-shell {
@@ -3010,7 +3024,8 @@ section.animate-in {
   }
 
   .chat-bubble {
-    max-width: 16ch;
+    max-width: 100%;
+    font-size: 11px;
   }
 
   .resume-shell {
